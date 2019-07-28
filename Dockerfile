@@ -1,5 +1,5 @@
 FROM openjdk:10-jre
-MAINTAINER Michael Ferguson <mpherg@gmail.com>
+MAINTAINER Robert Taylor <rob89m@outlook.com>
 
 ENV BLYNK_SERVER_VERSION 0.39.12
 RUN mkdir /blynk
