@@ -16,4 +16,4 @@ EXPOSE 8080 9443
 
 WORKDIR /data
 #ENTRYPOINT ["java", "-jar", "/data/server.jar", "-dataFolder", "/data", "-serverConfig", "/data/server.properties"]
-ENTRYPOINT ["java", "-jar", "/data/server.jar", "-dataFolder", "/data", "-serverConfig", "/data/server.properties"]
+ENTRYPOINT ["java", "-jar", "/data/server.jar", "-dataFolder", "/data"]
