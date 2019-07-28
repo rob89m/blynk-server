@@ -2,15 +2,12 @@ FROM openjdk:10-jre
 MAINTAINER Robert Taylor <rob89m@outlook.com>
 
 ENV BLYNK_SERVER_VERSION 0.39.12
-RUN mkdir /blynk
+RUN mkdir /data
 RUN curl -L https://github.com/blynkkk/blynk-server/releases/download/v${BLYNK_SERVER_VERSION}/server-${BLYNK_SERVER_VERSION}.jar > /blynk/server.jar
 
-# Create data folder. To persist data, map a volume to /data
-RUN mkdir /data
-
 # Create configuration folder. To persist data, map a file to /config/server.properties
-RUN mkdir /config && touch /config/server.properties
-VOLUME ["/config", "/data/backup"]
+RUN touch /data/server.properties
+VOLUME ["/data", "/data/backup"]
 
 # IP port listing:
 # 8080: Hardware without ssl/tls support
@@ -18,4 +15,4 @@ VOLUME ["/config", "/data/backup"]
 EXPOSE 8080 9443
 
 WORKDIR /data
-ENTRYPOINT ["java", "-jar", "/blynk/server.jar", "-dataFolder", "/data", "-serverConfig", "/config/server.properties"]
+ENTRYPOINT ["java", "-jar", "/data/server.jar", "-dataFolder", "/data", "-serverConfig", "/data/server.properties"]
